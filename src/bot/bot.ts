@@ -1006,6 +1006,21 @@ Professional kurash musobaqalari va ekspert sharhlariga kirish uchun obuna bo'li
         }
     }
 
+    // ============================================
+    // ASOSIY MENYU - FUTBOL (DEFAULT)
+    // ============================================
+    // Agar sport tanlash kerak bo'lsa, pastdagi comment'ni oching
+
+    private async showMainMenu(ctx: BotContext): Promise<void> {
+        // Sport tanlash o'rniga, darhol Futbol menyusini ko'rsatamiz
+        ctx.session.selectedSport = "football";
+        await this.showMainMenuForFootball(ctx);
+    }
+
+    /* 
+    // ESKI KOD - SPORT TANLASH (VAQTINCHA COMMENT)
+    // Keyinchalik kerak bo'lsa, yuqoridagi kodni o'chirib, buni oching
+    
     private async showMainMenu(ctx: BotContext): Promise<void> {
         ctx.session.hasAgreedToTerms = false;
 
@@ -1048,6 +1063,7 @@ Qaysi sport turiga qiziqasiz?`,
             });
         }
     }
+    */
 
     private async handleStart(ctx: BotContext): Promise<void> {
         ctx.session.hasAgreedToTerms = false;
@@ -2691,14 +2707,18 @@ Qaysi sport turiga qiziqasiz?`,
     private async handleSetUzbekLanguage(ctx: BotContext) {
         ctx.session.hasAgreedToTerms = false;
         ctx.session.lang = "uz"
-        await this.showMainMenu(ctx)
+        ctx.session.selectedSport = "football"; // ← DEFAULT FUTBOL
+        // await this.showMainMenu(ctx) // ← SPORT TANLASH MENYUSI (COMMENT)
+        await this.showMainMenuForFootball(ctx) // ← DARHOL FUTBOL MENYUSI
 
     }
 
     private async handleSetRussianLanguage(ctx: BotContext) {
         ctx.session.hasAgreedToTerms = false;
         ctx.session.lang = "ru"
-        await this.showMainMenu(ctx)
+        ctx.session.selectedSport = "football"; // ← DEFAULT FUTBOL
+        // await this.showMainMenu(ctx) // ← SPORT TANLASH MENYUSI (COMMENT)
+        await this.showMainMenuForFootball(ctx) // ← DARHOL FUTBOL MENYUSI
 
     }
 }
