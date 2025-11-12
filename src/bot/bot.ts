@@ -861,7 +861,7 @@ export class SubscriptionBot {
             'back_to_payment_types': this.showPaymentTypeSelection.bind(this),
             'check_status': this.handleStatus.bind(this),
             'renew': this.handleRenew.bind(this),
-            'back_to_main_menu': this.showMainMenu.bind(this),
+            'back_to_main_menu': this.showlangMenu.bind(this), // ← TIL TANLASHGA QAYTADI
             'main_menu': this.showMainMenu.bind(this),
             'menu_football': this.showMainMenuForFootball.bind(this),
             'menu_wrestling': this.showMainMenuForWrestling.bind(this),
